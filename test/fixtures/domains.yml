@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  url: MyText
+  url: https://mail.ru
 
 two:
-  url: MyText
+  url: http://ya.ru

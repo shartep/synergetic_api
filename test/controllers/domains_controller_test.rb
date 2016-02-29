@@ -1,39 +1,41 @@
 require 'test_helper'
 
 class DomainsControllerTest < ActionController::TestCase
-  setup do
-    @domain = domains(:one)
-  end
-
   test "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:domains)
   end
 
-  test "should create domain" do
+  test "shouldn't create domain http://ya.ru, request without any credentials" do
+    @domain = domains(:two)
+
+    assert_no_difference('Domain.count') do
+      post :create, domain: { url: @domain.url }
+    end
+
+    assert_response 401
+  end
+
+  test "shouldn't create domain http://ya.ru, request with admin3 credentials" do
+    @domain = domains(:two)
+
+    assert_no_difference('Domain.count') do
+      request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('admin3', '')
+      post :create, domain: { url: @domain.url }
+    end
+
+    assert_response 422
+  end
+
+  test "should create domain https://mail.ru, request with admin3 credentials" do
+    @domain = domains(:one)
+
     assert_difference('Domain.count') do
+      request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('admin3', '')
       post :create, domain: { url: @domain.url }
     end
 
     assert_response 201
-  end
-
-  test "should show domain" do
-    get :show, id: @domain
-    assert_response :success
-  end
-
-  test "should update domain" do
-    put :update, id: @domain, domain: { url: @domain.url }
-    assert_response 204
-  end
-
-  test "should destroy domain" do
-    assert_difference('Domain.count', -1) do
-      delete :destroy, id: @domain
-    end
-
-    assert_response 204
   end
 end

@@ -544,3 +544,211 @@ Started POST "/domains" for 127.0.0.1 at 2016-02-26 19:37:36 +0200
 Processing by DomainsController#create as */*
   Parameters: {"domain"=>{"url"=>"https://skdfh.com/"}}
 Completed 422 Unprocessable Entity in 10095ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/domains" for 127.0.0.1 at 2016-02-29 13:01:52 +0200
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
+  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/shartep/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/shartep/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/shartep/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.7ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.9ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (158.8ms)
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "domains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (4.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (4.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160226130435')
+  [1m[36m (27.3ms)[0m  [1mDROP TABLE "domains"[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "domains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/domains" for 127.0.0.1 at 2016-02-29 13:02:31 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DomainsController#index as */*
+  [1m[35mDomain Load (0.3ms)[0m  SELECT "domains".* FROM "domains"
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rails/routes" for 127.0.0.1 at 2016-02-29 13:07:24 +0200
+
+ActionController::RoutingError (No route matches [GET] "/rails/routes"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/shartep/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/shartep/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/shartep/.rvm/rubies/ruby-2.2.2/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.6ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (37.2ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (182.3ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:08:02 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"{'domain': {'url':'https://mail.ru'}}"=>nil}
+Completed 400 Bad Request in 4018ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: domain):
+  app/controllers/domains_controller.rb:37:in `domain_params'
+  app/controllers/domains_controller.rb:18:in `create'
+
+
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (32.7ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.6ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (96.3ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:08:36 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"{'domain': {'url':'https://mail.ru'}}"=>nil}
+Completed 400 Bad Request in 10723ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: domain):
+  app/controllers/domains_controller.rb:37:in `domain_params'
+  app/controllers/domains_controller.rb:18:in `create'
+
+
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (42.9ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.8ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (101.8ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:09:10 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"domain: {'url':'https://mail.ru'}"=>nil}
+Completed 400 Bad Request in 10886ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: domain):
+  app/controllers/domains_controller.rb:37:in `domain_params'
+  app/controllers/domains_controller.rb:18:in `create'
+
+
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (32.9ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.4ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (92.0ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:09:37 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"domain: {'url':'https://mail.ru'}"=>nil}
+Completed 400 Bad Request in 19462ms
+
+ActionController::ParameterMissing (param is missing or the value is empty: domain):
+  app/controllers/domains_controller.rb:37:in `domain_params'
+  app/controllers/domains_controller.rb:18:in `create'
+
+
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (33.9ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.9ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (91.9ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:10:15 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"domain"=>"{'url':'https://mail.ru'}"}
+Completed 500 Internal Server Error in 9837ms
+
+NoMethodError (undefined method `permit' for "{'url':'https://mail.ru'}":String):
+  app/controllers/domains_controller.rb:37:in `domain_params'
+  app/controllers/domains_controller.rb:18:in `create'
+
+
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (33.3ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.8ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/shartep/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (92.5ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:11:31 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"domain"=>{"url"=>"https://mail.ru"}}
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (19.7ms)[0m  INSERT INTO "domains" ("url", "created_at", "updated_at") VALUES (?, ?, ?)  [["url", "https://mail.ru"], ["created_at", "2016-02-29 11:11:40.897920"], ["updated_at", "2016-02-29 11:11:40.897920"]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 9460ms (Views: 2.9ms | ActiveRecord: 30.4ms)
+
+
+Started GET "/domains" for 127.0.0.1 at 2016-02-29 13:12:17 +0200
+Processing by DomainsController#index as */*
+  [1m[35mDomain Load (0.3ms)[0m  SELECT "domains".* FROM "domains"
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:13:19 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"domain"=>{"url"=>"https://mail.ru"}}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "domains" ("url", "created_at", "updated_at") VALUES (?, ?, ?)  [["url", "https://mail.ru"], ["created_at", "2016-02-29 11:23:31.192780"], ["updated_at", "2016-02-29 11:23:31.192780"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 611262ms (Views: 1.6ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/domains" for 127.0.0.1 at 2016-02-29 13:34:34 +0200
+Processing by DomainsController#create as */*
+  Parameters: {"domain"=>{"url"=>"http://ya.ru"}}
+Completed 422 Unprocessable Entity in 14ms (Views: 0.4ms | ActiveRecord: 1.0ms)
